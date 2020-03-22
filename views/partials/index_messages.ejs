@@ -1,0 +1,76 @@
+<% if(reg_success_email != '') { %>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><strong>Account Registered, Email Activation Required</strong></h4>
+        Welcome to VMK! Your account has been successfully registered. To activate your account, visit the activation link sent to <strong><%= reg_success_email %></strong>. Accounts left unactivated will be deleted after 48 hours.
+    </div>
+<% } %>
+
+<% if(reg_fail_activation != '') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong><%= reg_fail_activation %></strong></h4>
+        Your account could not be activated with the link provided. Please try again. If the issue persists, please contact VMK for support.
+    </div>
+<% } %>
+
+<% if(reg_success_activation != '') { %>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><strong><%= reg_success_activation %></strong></h4>
+        Welcome to VMK! Your account has been successfully activated! You may now login.
+    </div>
+<% } %>
+
+<% if(error != '') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong><%= error %></strong></h4>
+        Verify you are using the correct credentials. If the problem persists, reset your password or contact VMK for support.
+    </div>
+<% } %>
+
+<% if(success_logout != '') { %>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><strong>Logged Out</strong></h4>
+        You have been successfully logged out of VMK
+    </div>
+<% } %>
+
+<% if(fail_auth != '') { %>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading"><strong>Authentication Error</strong></h4>
+        You must be logged in to access that resource
+    </div>
+<% } %>
+
+<% if(reg_already_registered != '') { %>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading"><strong>Already Registered</strong></h4>
+        It looks like you already have an account with VMK. Multiple accounts are prohibited and will result in account deletion.
+    </div>
+<% } %>
+
+<% if(already_logged_in != '') { %>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading"><strong>Already Logged In</strong></h4>
+        You are already logged in. No need to log in again!
+    </div>
+<% } %>
+
+<% if(pass_reset_sent != '') { %>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><strong>Password Reset Sent</strong></h4>
+        <%= pass_reset_sent %>
+    </div>
+<% } %>
+
+<% if(reset_fail != '') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong>Password Reset Failed</strong></h4>
+        <%= reset_fail %>
+    </div>
+<% } %>
+
+<% if(reg_fail_closed != '') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong>Registration Closed</strong></h4>
+        We're sorry! Users are unable to make accounts at this time. Please check back soon for registration to reopen. Thank you!
+    </div>
+<% } %>

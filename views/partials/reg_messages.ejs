@@ -1,0 +1,10 @@
+<% if(typeof errors != 'undefined') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong>Uh Oh!</strong></h4>
+        <p>The following errors were encountered when trying to register your account. Please try again!</p>
+        <hr>
+        <% errors.forEach(function(error) { %>
+            <p class="mb-0">• <%= error.msg %></p>
+        <% }); %>
+    </div>
+<% } %>

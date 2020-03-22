@@ -1,0 +1,133 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="author" content="VMK">
+        <meta name="description" content="A fan-made recreation of Disney's Virtual Magic Kingdom">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title -->
+        <title>VMK</title>
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+        <!-- Plugin-CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <!-- Main-Stylesheets -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body data-spy="scroll" data-target=".mainmenu-area">
+        <!-- Preloader-content -->
+        <div class="preloader">
+            <span><img src="images/castle-icon-white.png" /></span>
+        </div>
+    
+        <!-- MainMenu-Area -->
+        <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Logo"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="primary_menu">
+                    <ul class="nav navbar-nav mainmenu">
+                        <li class="active"><a href="/#home_page">Home</a></li>
+                        <li><a href="/#about_page">About</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="forums/index.php">Community</a></li>
+                        <% if (!req.user) { %><li><a href="/register">Register</a></li><% } %>
+                    </ul>
+                    <div class="right-button hidden-xs">
+                        <% if (req.user) { %>
+                            <a href="/logout">Logout</a>
+                        <% } else { %>
+                            <a href="/register">Sign Up</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- MainMenu-Area-End -->
+        <!-- Home-Area -->
+        <header class="home-area overlay" id="home_page">
+            <div class="container">
+                <% include ./partials/recover_messages %>
+                <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                            <div class="subscribe-form text-center">
+                                <h3 class="blue-color">Recover Password</h3>
+                                <p class="gray-color">Enter your email address to reset your VMK password</p>
+                                <div class="space-20"></div>
+                                <form class="login-form" action="/recover" method="post">
+                                    <input type="email" class="control" placeholder="Enter your email" required="required" id="email" name="email">
+                                    <button class="bttn-white active" type="submit"><span class="lnr lnr-redo"></span> Reset Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <div class="space-60"></div>
+            </div>
+        </header>
+        <!-- Home-Area-End -->
+        <!-- Footer-Area -->
+        <footer class="footer-area" id="contact_page">
+            <!-- Footer-Bootom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <span>VMK is in no way affiliated with The Walt Disney Company, the Disney Interactive Media Group, and/or Sulake. All rights belong to their respective owners.</span>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <div class="space-30 hidden visible-xs"></div>
+                        </div>
+                        <div class="col-xs-12 col-md-7">
+                            <div class="footer-menu">
+                                <ul>
+                                    <li class="active"><a href="#home_page">Home</a></li>
+                                    <li><a href="#about_page">About</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="forums/index.php">Community</a></li>
+                                    <% if (!req.user) { %><li><a href="register">Register</a></li><% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer-Bootom-End -->
+        </footer>
+        <!-- Footer-Area-End -->
+        <!--Vendor-JS-->
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/vendor/jquery-ui.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <!--Plugin-JS-->
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/contact-form.js"></script>
+        <script src="js/ajaxchimp.js"></script>
+        <script src="js/scrollUp.min.js"></script>
+        <script src="js/magnific-popup.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <!--Main-active-JS-->
+        <script src="js/main.js"></script>
+    </body>
+    

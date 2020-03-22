@@ -1,0 +1,6 @@
+<% if(typeof recover_email_error != 'undefined') { %>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><strong>Uh Oh!</strong></h4>
+        <p>No account with the email address <%= recover_email_error %> was found. Please try another address.</p>
+    </div>
+<% } %>

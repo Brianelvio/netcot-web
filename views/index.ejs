@@ -1,0 +1,200 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="VMK">
+    <meta name="description" content="A fan-made recreation of Disney's Virtual Magic Kingdom">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>VMK</title>
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+    <!-- Plugin-CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Main-Stylesheets -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".mainmenu-area">
+    <!-- Preloader-content -->
+    <div class="preloader">
+        <span><img src="images/castle-icon-white.png" /></span>
+    </div>
+
+    <!-- MainMenu-Area -->
+    <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="primary_menu">
+                <ul class="nav navbar-nav mainmenu">
+                    <li class="active"><a href="/#home_page">Home</a></li>
+                    <li><a href="/#about_page">About</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="forums/index.php">Community</a></li>
+                    <% if (!req.user) { %><li><a href="/register">Register</a></li><% } %>
+                </ul>
+                <div class="right-button hidden-xs">
+                    <% if (req.user) { %>
+                        <a href="/logout">Logout</a>
+                    <% } else { %>
+                        <a href="/register">Sign Up</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- MainMenu-Area-End -->
+    <!-- Home-Area -->
+    <header class="home-area overlay" id="home_page">
+        <div class="container">
+            <% include ./partials/index_messages %>
+            <% if (!req.user) { %>
+            <div class="row">
+                <div class="col-xs-12 hidden-sm col-md-5">
+                    <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
+                        <img name="bcharacter" src="images/characters/1.png" alt="">
+                    </figure>
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div class="space-80 hidden-xs"></div>
+                    <h1 class="wow fadeInUp" data-wow-delay="0.4s">A recreation of Disney's Virtual Magic Kingdom</h1>
+                    <div class="space-20"></div>
+                    <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                        <!-- LOGIN FORM -->
+                        <form class="login-form" action="/login" method="post">
+                            <input type="email" class="control" placeholder="Enter your email" required="required" id="login-email" name="email">
+                            <input type="password" class="control" placeholder="Enter your password" required="required" id="login-password" name="password" >
+                            <div class="space-20"></div>
+                            <button type="submit" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-lock"></i>Login</button>
+                        </form>
+                        <!-- END FORM -->
+                        <div class="space-20"></div>
+                        <a class="white-color" href="/recover">Forgot password?</a>
+                        <br />
+                        <a class="white-color" href="/register">Not registered? Sign up here!</a>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                        <div class="subscribe-form text-center">
+                            <h3 class="blue-color">Welcome back, <%= req.user.ign %>!</h3>
+                            <img src="images/no-avi.png" />
+                            <div class="space-30"></div>
+                            <button onclick="window.open('/play', 'VMK', 'width=800,height=600');" class="bttn-white active" type="submit"><span><img src="images/castle-icon-white-trimmed.png" style="width: 24px; height: 24px; margin-top: -10px;"/></span> ENTER GAME</button>
+                            <div class="space-20"></div>
+                            <p class="gray-color"><strong><%= req.user.credits %></strong> credits</p>
+                            <p class="gray-color"><strong>0</strong> friends online</p>
+                            <p class="gray-color">Last online <strong>never</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-60"></div>
+            <% } %>
+        </div>
+    </header>
+    <!-- Home-Area-End -->
+    <!-- About-Area -->
+    <section class="section-padding" id="about_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                    <div class="page-title text-center">
+                        <img src="images/about-logo.png" alt="About Logo">
+                        <div class="space-20"></div>
+                        <h5 class="title">About NETCOT</h5>
+                        <div class="space-30"></div>
+                        <h3 class="blue-color">NETCOT Center is ...</h3>
+                        <div class="space-20"></div>
+                        <p>Blah blah blah ignore this</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About-Area-End -->
+    <!-- Subscribe-Form -->
+    <!-- <div class="subscribe-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="subscribe-form text-center">
+                        <h3 class="blue-color">Get Notified When We Open</h3>
+                        <div class="space-20"></div>
+                        <form id="mc-form">
+                            <input type="email" class="control" placeholder="Enter your email" required="required" id="mc-email">
+                            <button class="bttn-white active" type="submit"><span class="lnr lnr-location"></span> Notify Me</button>
+                            <label class="mt10" for="mc-email"></label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Subscribe-Form-Area -->
+    <!-- Footer-Area -->
+    <footer class="footer-area" id="contact_page">
+        <!-- Footer-Bootom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-5">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <span>NETCOT Center is in no way affiliated with The Walt Disney Company, the Disney Interactive Media Group, and/or Sulake. All rights belong to their respective owners.</span>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <div class="space-30 hidden visible-xs"></div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <div class="footer-menu">
+                            <ul>
+                                <li class="active"><a href="#home_page">Home</a></li>
+                                <li><a href="#about_page">About</a></li>
+                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="forums/index.php">Community</a></li>
+                                <% if (!req.user) { %><li><a href="register">Register</a></li><% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-Bootom-End -->
+    </footer>
+    <!-- Footer-Area-End -->
+    <!--Vendor-JS-->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/jquery-ui.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <!--Plugin-JS-->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/ajaxchimp.js"></script>
+    <script src="js/scrollUp.min.js"></script>
+    <script src="js/magnific-popup.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <!--Main-active-JS-->
+    <script src="js/main.js"></script>
+</body>
