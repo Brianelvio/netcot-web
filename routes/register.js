@@ -59,7 +59,7 @@ router.post('/register', (req, res) => {
     if (password.length > 59) {
         errors.push({ msg: 'Please use a shorter password' });
     } else {
-        var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+        var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$\?\$%\^&\*\(\)\~\`])(?=.{8,});
         // Check password strength
         if (!strongRegex.test(password)) {
             errors.push({ msg: 'Password must contain a lowercase, an uppercase, a numeric, and a special character, and must be at least 8 characters in length.'})
